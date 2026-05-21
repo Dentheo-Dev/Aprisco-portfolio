@@ -27,7 +27,7 @@ Acesse e explore o sistema completo com dados reais de demonstração:
 | Carolina Lima | 000.090.004-45 | Membro de célula |
 | Roberto Dias | 000.090.005-26 | Membro simples |
 
-> **Senha de todos:** `Senha123`
+> **Senha de todos:** `demo1234`
 
 ---
 
