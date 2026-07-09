@@ -1,0 +1,147 @@
+---
+const waMsg = encodeURIComponent('Olá! Gostaria de agendar uma demonstração gratuita do Aprisco.');
+const waLink = `https://wa.me/5521990193416?text=${waMsg}`;
+
+const links = [
+  { href: '#modulos', label: 'Módulos' },
+  { href: '#arquitetura', label: 'Arquitetura' },
+  { href: '#multitenant', label: 'Multi-Igreja' },
+  { href: '#docs', label: 'Como funciona' },
+  { href: '#precos', label: 'Preços' },
+];
+---
+
+<nav>
+  <a href="#hero" class="nav-logo" aria-label="Aprisco — página inicial">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="15" cy="15" r="14" stroke="#B5914A" stroke-width="1.5"/>
+      <path d="M15 6 L22 12 V24 H8 V12 Z" fill="#2C1B0E"/>
+      <path d="M15 6 L22 12 H8 Z" fill="#B5914A"/>
+      <rect x="13.2" y="16" width="3.6" height="8" fill="#E9C46A"/>
+    </svg>
+    Apri<span>sco</span>
+  </a>
+
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-links" id="navLinks">
+    {links.map((l) => (
+      <li><a href={l.href}>{l.label}</a></li>
+    ))}
+    <li><a href={waLink} target="_blank" rel="noopener" class="nav-cta">Demonstração</a></li>
+  </ul>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 5vw;
+    background: rgba(250, 246, 238, 0.93);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(59, 35, 9, 0.12);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--verde-escuro);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--dourado); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--verde); }
+  .nav-cta {
+    background: var(--verde);
+    color: white !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 100px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--verde-escuro) !important; }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--verde-escuro);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 900px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      background: var(--creme);
+      border-bottom: 1px solid rgba(59, 35, 9, 0.12);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .nav-links.open { max-height: 400px; }
+    .nav-links li { width: 100%; padding: 0.5rem 5vw; }
+    .nav-links a { display: block; padding: 0.6rem 0; }
+    .nav-cta { display: inline-block; margin-top: 0.3rem; }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle?.addEventListener('click', () => {
+    const isOpen = links?.classList.toggle('open');
+    toggle.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(!!isOpen));
+  });
+  links?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle?.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

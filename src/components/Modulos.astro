@@ -1,0 +1,181 @@
+---
+const modulos = [
+  {
+    icon: '🔐',
+    nome: 'Autenticação',
+    desc: 'Sistema seguro com três fluxos distintos de acesso: membros, colaboradores e administração.',
+    features: ['Primeiro acesso simplificado', 'Recuperação de senha segura', 'Proteção contra enumeração de usuários', 'Três perfis de acesso distintos'],
+  },
+  {
+    icon: '👥',
+    nome: 'Membros',
+    desc: 'Cadastro completo com status, histórico e perfis detalhados para cada pessoa da congregação.',
+    features: ['Membros, visitantes e colaboradores', 'Formatação automática de CPF e telefone', 'Redirecionamento inteligente por perfil', 'Filtros e busca avançada'],
+  },
+  {
+    icon: '🌿',
+    nome: 'Células & Redes',
+    desc: 'Gestão completa da estrutura de células com hierarquia de redes totalmente configurável.',
+    features: ['Redes e células com labels dinâmicos', 'Filtro ativo/inativo/todos', 'Membros e líderes vinculados', 'Terminologia por igreja (Célula, GC, etc.)'],
+  },
+  {
+    icon: '📖',
+    nome: 'Cursos & EBD',
+    desc: 'Plataforma de cursos e trilhas de formação para discipulado e capacitação de líderes.',
+    features: ['Criação e edição de cursos', 'Inscrições e progresso do aluno', 'Materiais e aulas organizados', 'Certificados de conclusão'],
+  },
+  {
+    icon: '📅',
+    nome: 'Eventos',
+    desc: 'Calendário e gestão de eventos da igreja com controle de inscrições e presença.',
+    features: ['Eventos recorrentes e pontuais', 'Inscrições com vagas limitadas', 'Check-in e controle de presença', 'Notificações e lembretes'],
+  },
+  {
+    icon: '💰',
+    nome: 'Finanças',
+    desc: 'Controle financeiro completo com dízimos, ofertas, despesas e relatórios gerenciais.',
+    features: ['Registro de dízimos e ofertas', 'Categorização de receitas e despesas', 'Relatórios mensais e anuais', 'Exportação de dados'],
+  },
+  {
+    icon: '🙋',
+    nome: 'Voluntários & Escalas',
+    desc: 'Escala e gestão de voluntários por ministério, com disponibilidade e histórico de serviços.',
+    features: ['Cadastro por ministério', 'Escala e disponibilidade semanal', 'Confirmação de escala por notificação', 'Relatório de frequência'],
+  },
+  {
+    icon: '📢',
+    nome: 'Feed & Comunicação',
+    desc: 'Mural de avisos e comunicados internos para manter a congregação informada e conectada.',
+    features: ['Publicação de comunicados', 'Segmentação por grupos e células', 'Fixar avisos importantes', 'Reações e comentários'],
+  },
+  {
+    icon: '📦',
+    nome: 'Patrimônio',
+    desc: 'Controle de bens, equipamentos e espaços físicos da igreja, com manutenção programada.',
+    features: ['Cadastro de bens e equipamentos', 'Controle de manutenção', 'Reserva de salas e espaços', 'Histórico de movimentações'],
+  },
+  {
+    icon: '📊',
+    nome: 'Relatórios & Analytics',
+    desc: 'Painéis gerenciais com indicadores de crescimento, engajamento e saúde da igreja.',
+    features: ['Dashboards por módulo', 'Comparativo por período', 'Indicadores de crescimento', 'Exportação em CSV e PDF'],
+  },
+  {
+    icon: '🎂',
+    nome: 'Pastoral & Aniversariantes',
+    desc: 'Acompanhamento pastoral com aniversariantes, visitas e cuidado com a congregação.',
+    features: ['Lista de aniversariantes do mês', 'Registro de visitas pastorais', 'Acompanhamento de novos convertidos', 'Alertas automáticos'],
+  },
+  {
+    icon: '🏛️',
+    nome: 'Multi-campus',
+    desc: 'Gestão de múltiplas unidades e filiais sob uma mesma administração central.',
+    features: ['Unidades e campi vinculados', 'Indicadores consolidados', 'Permissões por unidade', 'Relatórios comparativos entre campi'],
+  },
+  {
+    icon: '📱',
+    nome: 'App PWA',
+    desc: 'Experiência de aplicativo instalável direto do navegador, sem lojas de app.',
+    features: ['Instalável em Android e iOS', 'Funciona offline em telas-chave', 'Notificações push', 'Atualização automática'],
+  },
+  {
+    icon: '🔌',
+    nome: 'API REST',
+    desc: 'API RESTful pronta para integrações externas, automações e apps de terceiros.',
+    features: ['Endpoints documentados', 'Autenticação por token', 'Integrações com automações', 'Webhooks de eventos'],
+  },
+  {
+    icon: '🏗️',
+    nome: 'Administração',
+    desc: 'Painel administrativo completo com configurações globais da igreja e gestão da plataforma.',
+    features: ['Configurações da Igreja (ChurchSettings)', 'Terminologia configurável por módulo', 'Gestão de usuários e permissões', 'Logs e auditoria'],
+  },
+];
+---
+
+<section id="modulos">
+  <div class="section-label">Funcionalidades</div>
+  <h2 class="section-title">Tudo que sua<br />igreja <em>precisa</em></h2>
+  <div class="divider"></div>
+  <p class="section-desc">
+    Cada módulo foi projetado para o contexto das igrejas brasileiras, com
+    terminologia configurável para se adaptar à cultura de cada congregação.
+  </p>
+
+  <div class="modules-grid">
+    {modulos.map((m) => (
+      <div class="module-card fade-in">
+        <div class="module-icon" aria-hidden="true">{m.icon}</div>
+        <div class="module-name">{m.nome}</div>
+        <div class="module-desc">{m.desc}</div>
+        <ul class="module-features">
+          {m.features.map((f) => <li>{f}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  #modulos { background: white; }
+
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .module-card {
+    background: var(--creme);
+    border-radius: 16px;
+    padding: 1.8rem;
+    border: 1px solid rgba(59, 35, 9, 0.08);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .module-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--verde-claro), var(--dourado));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .module-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08); }
+  .module-card:hover::before { transform: scaleX(1); }
+
+  .module-icon {
+    width: 44px; height: 44px;
+    background: var(--verde-suave);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .module-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--verde-escuro);
+    margin-bottom: 0.5rem;
+  }
+  .module-desc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--texto-suave);
+    margin-bottom: 1rem;
+  }
+  .module-features { list-style: none; }
+  .module-features li {
+    font-size: 0.82rem;
+    color: var(--texto-suave);
+    padding: 0.2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .module-features li::before { content: '✓'; color: var(--verde-claro); font-weight: 700; font-size: 0.85rem; }
+</style>

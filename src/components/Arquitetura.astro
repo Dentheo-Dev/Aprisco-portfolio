@@ -1,0 +1,166 @@
+---
+const tech = [
+  {
+    icon: '🐍',
+    nome: 'Django + Python',
+    why: 'Framework robusto e maduro com ORM poderoso, migrations automáticas e admin embutido. Alta produtividade para times enxutos.',
+  },
+  {
+    icon: '🐘',
+    nome: 'PostgreSQL',
+    why: 'Banco de dados robusto e escalável, pronto para produção. Suporta grande volume de dados, transações seguras e alta disponibilidade.',
+  },
+  {
+    icon: '📲',
+    nome: 'PWA — App instalável',
+    why: 'Experiência de aplicativo direto do navegador, sem depender de lojas de app, com suporte offline e notificações push.',
+  },
+  {
+    icon: '☁️',
+    nome: 'Cloudflare',
+    why: 'CDN, proteção contra ataques e cache de borda em escala global, garantindo velocidade e segurança para todas as igrejas atendidas.',
+  },
+  {
+    icon: '🌎',
+    nome: 'América/São_Paulo + pt-BR',
+    why: 'Timezone e locale brasileiros nativos em todas as operações, datas, formulários e exibição de dados.',
+  },
+];
+---
+
+<section id="arquitetura">
+  <div class="section-label">Tecnologia</div>
+  <h2 class="section-title">Arquitetura <em>sólida</em><br />e escalável</h2>
+  <div class="divider"></div>
+
+  <div class="arch-grid">
+    <div class="arch-diagram">
+      <div class="arch-title-box">Stack Tecnológico — Aprisco</div>
+
+      <div class="arch-layer">
+        <div class="arch-layer-name">🖥️ Frontend</div>
+        <div class="arch-layer-items">
+          <span class="arch-tag highlight">Django Templates</span>
+          <span class="arch-tag">Bootstrap 5</span>
+          <span class="arch-tag">pt-BR</span>
+          <span class="arch-tag">PWA</span>
+        </div>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-layer">
+        <div class="arch-layer-name">⚙️ Backend / API</div>
+        <div class="arch-layer-items">
+          <span class="arch-tag highlight">Django</span>
+          <span class="arch-tag highlight">DRF</span>
+          <span class="arch-tag">Python</span>
+          <span class="arch-tag">REST API</span>
+        </div>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-layer">
+        <div class="arch-layer-name">🗄️ Banco de Dados</div>
+        <div class="arch-layer-items">
+          <span class="arch-tag highlight">PostgreSQL</span>
+          <span class="arch-tag gold">Multi-tenant</span>
+          <span class="arch-tag">Migrations</span>
+        </div>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-layer">
+        <div class="arch-layer-name">☁️ Infraestrutura</div>
+        <div class="arch-layer-items">
+          <span class="arch-tag">Cloudflare</span>
+          <span class="arch-tag gold">Backups automáticos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-list">
+      {tech.map((t) => (
+        <div class="tech-item">
+          <div class="tech-icon" aria-hidden="true">{t.icon}</div>
+          <div class="tech-info">
+            <div class="tech-name">{t.nome}</div>
+            <div class="tech-why">{t.why}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #arquitetura { background: var(--creme); }
+
+  .arch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .arch-diagram {
+    background: var(--verde-escuro);
+    border-radius: 20px;
+    padding: 2rem;
+    color: white;
+  }
+  .arch-title-box {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 1.5rem;
+  }
+  .arch-layer {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.7rem;
+  }
+  .arch-layer-name {
+    font-size: 0.7rem;
+    color: var(--verde-claro);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .arch-layer-items { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .arch-tag {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .arch-tag.highlight { background: rgba(122, 82, 48, 0.25); color: var(--verde-claro); }
+  .arch-tag.gold { background: rgba(181, 145, 74, 0.25); color: var(--dourado-claro); }
+  .arch-arrow { text-align: center; color: rgba(255, 255, 255, 0.3); margin: 0.3rem 0; font-size: 0.9rem; }
+
+  .tech-list { display: flex; flex-direction: column; gap: 1rem; }
+  .tech-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem;
+    background: white;
+    border-radius: 14px;
+    border: 1px solid rgba(59, 35, 9, 0.08);
+  }
+  .tech-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--verde-suave);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .tech-info { flex: 1; }
+  .tech-name { font-weight: 600; font-size: 0.95rem; color: var(--verde-escuro); margin-bottom: 0.2rem; }
+  .tech-why { font-size: 0.82rem; color: var(--texto-suave); line-height: 1.5; }
+
+  @media (max-width: 900px) {
+    .arch-grid { grid-template-columns: 1fr; }
+  }
+</style>

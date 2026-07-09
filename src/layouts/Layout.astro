@@ -1,0 +1,199 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Aprisco — Sistema de Gestão para Igrejas',
+  description = 'O Aprisco é um ecossistema completo e multi-tenant para gestão de igrejas brasileiras: membros, células, finanças, voluntários, eventos e muito mais, tudo em um só lugar.',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/og-image.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="theme-color" content="#2C1B0E" />
+  <link rel="canonical" href={canonicalURL} />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImageURL} />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Aprisco" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageURL} />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Aprisco",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": description,
+    "url": "https://apriscoapp.com.br",
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "BRL",
+      "lowPrice": "97",
+      "highPrice": "397",
+      "offerCount": "3"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "Theo Software",
+      "email": "dentheo20@gmail.com"
+    }
+  })} />
+</head>
+<body>
+  <slot />
+
+  <style is:global>
+    :root {
+      --verde: #3B2309;
+      --verde-escuro: #2C1B0E;
+      --verde-claro: #7A5230;
+      --verde-suave: #F0E4CC;
+      --dourado: #B5914A;
+      --dourado-claro: #E9C46A;
+      --creme: #FAF6EE;
+      --texto: #1A1008;
+      --texto-suave: #5A4633;
+      --branco: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--texto);
+      background: var(--creme);
+      overflow-x: hidden;
+    }
+
+    section { padding: 6rem 5vw; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dourado);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--verde-escuro);
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--dourado); }
+    .section-desc {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--texto-suave);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--verde-claro), var(--dourado));
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-primary {
+      background: var(--verde);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(59, 35, 9, 0.3);
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--verde-escuro);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(59, 35, 9, 0.4);
+    }
+    .btn-secondary {
+      color: var(--verde-escuro);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.9rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--verde); }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 1024px) {
+      section { padding: 4.5rem 6vw; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 3.5rem 6vw; }
+    }
+  </style>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

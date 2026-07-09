@@ -1,0 +1,65 @@
+---
+const waMsg = encodeURIComponent('Olá! Gostaria de agendar uma demonstração gratuita do Aprisco.');
+const waLink = `https://wa.me/5521990193416?text=${waMsg}`;
+---
+
+<section id="cta">
+  <div class="section-label">Pronto para começar?</div>
+  <h2 class="section-title">Transforme a gestão<br />da sua <em>igreja hoje</em></h2>
+  <p class="section-desc">
+    Agende uma demonstração gratuita e veja o Aprisco funcionando com os dados e a
+    terminologia da sua própria congregação.
+  </p>
+  <div class="cta-btns">
+    <a href={waLink} target="_blank" rel="noopener" class="btn-cta-white">💬 Solicitar demonstração gratuita</a>
+    <a href="#modulos" class="btn-cta-outline">Ver todos os módulos</a>
+  </div>
+</section>
+
+<style>
+  #cta {
+    background: linear-gradient(135deg, var(--verde-escuro) 0%, #1a0e06 100%);
+    text-align: center;
+    padding: 7rem 5vw;
+    position: relative;
+    overflow: hidden;
+  }
+  #cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(122, 82, 48, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #cta .section-label { color: rgba(255, 255, 255, 0.5); }
+  #cta .section-title { color: white; }
+  #cta .section-title em { color: var(--dourado-claro); }
+  #cta .section-desc { color: rgba(255, 255, 255, 0.65); margin: 0 auto 2.5rem; }
+
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  .btn-cta-white {
+    background: white;
+    color: var(--verde-escuro);
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); }
+
+  .btn-cta-outline {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-cta-outline:hover { border-color: white; background: rgba(255, 255, 255, 0.1); }
+</style>

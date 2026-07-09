@@ -1,0 +1,63 @@
+---
+const year = new Date().getFullYear();
+const links = [
+  { href: '#modulos', label: 'Módulos' },
+  { href: '#arquitetura', label: 'Tecnologia' },
+  { href: '#precos', label: 'Preços' },
+  { href: 'mailto:dentheo20@gmail.com', label: 'Contato' },
+];
+---
+
+<footer>
+  <div class="footer-logo">
+    <svg width="26" height="26" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="15" cy="15" r="14" stroke="#B5914A" stroke-width="1.5"/>
+      <path d="M15 6 L22 12 V24 H8 V12 Z" fill="#FAF6EE"/>
+      <path d="M15 6 L22 12 H8 Z" fill="#B5914A"/>
+      <rect x="13.2" y="16" width="3.6" height="8" fill="#E9C46A"/>
+    </svg>
+    Apri<span>sco</span>
+  </div>
+  <p>© {year} Aprisco · Sistema de Gestão Eclesiástica · Brasil · por Theo Software</p>
+  <ul class="footer-links">
+    {links.map((l) => (
+      <li><a href={l.href}>{l.label}</a></li>
+    ))}
+  </ul>
+</footer>
+
+<style>
+  footer {
+    background: #1a0e06;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 3rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: white;
+  }
+  .footer-logo span { color: var(--dourado); }
+  footer p { font-size: 0.82rem; }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--verde-claro); }
+
+  @media (max-width: 700px) {
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+const stats = [
+  { num: '9+', label: 'Módulos integrados' },
+  { num: '100%', label: 'Multi-tenant isolado' },
+  { num: 'pt-BR', label: '100% em português' },
+  { num: '99.9%', label: 'Disponibilidade (uptime)' },
+];
+---
+
+<div class="stats-bar">
+  {stats.map((s) => (
+    <div class="stats-bar-item">
+      <div class="stats-bar-num">{s.num}</div>
+      <div class="stats-bar-label">{s.label}</div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .stats-bar {
+    background: var(--verde-escuro);
+    padding: 2.5rem 5vw;
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .stats-bar-item { text-align: center; }
+  .stats-bar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--dourado-claro);
+  }
+  .stats-bar-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.3rem;
+  }
+</style>

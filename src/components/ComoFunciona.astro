@@ -1,0 +1,105 @@
+---
+const steps = [
+  'Administrador cadastra o membro com nome, CPF e e-mail pelo painel de administração.',
+  'Sistema gera credenciais temporárias e envia e-mail de boas-vindas automaticamente.',
+  'Membro acessa o link e define sua senha pessoal no formulário de primeiro acesso.',
+  'Após a definição da senha, é autenticado e redirecionado ao próprio perfil.',
+  'Sistema registra a data do primeiro acesso e atualiza o status para "Ativo".',
+];
+---
+
+<section id="docs">
+  <div class="section-label">Como funciona</div>
+  <h2 class="section-title">Do cadastro ao<br />primeiro <em>acesso</em></h2>
+  <div class="divider"></div>
+  <p class="section-desc">
+    Um fluxo de onboarding simples para que qualquer membro — mesmo o menos
+    familiarizado com tecnologia — consiga acessar a plataforma sem fricção.
+  </p>
+
+  <div class="docs-content">
+    <div class="doc-block fade-in">
+      <div class="doc-block-title">📋 Fluxo de primeiro acesso</div>
+      <ol class="doc-step-list">
+        {steps.map((s) => <li>{s}</li>)}
+      </ol>
+    </div>
+
+    <div class="doc-block fade-in">
+      <div class="doc-block-title">⚙️ O que sua igreja configura</div>
+      <ul class="doc-config-list">
+        <li><strong>Terminologia</strong> — chame "Célula" de GC, Kids, ou o nome que sua igreja usa.</li>
+        <li><strong>Hierarquia</strong> — redes, supervisores, líderes e trainees no seu próprio formato.</li>
+        <li><strong>Módulos ativos</strong> — habilite apenas o que sua igreja realmente utiliza.</li>
+        <li><strong>Permissões</strong> — defina o que cada perfil de usuário pode ver e editar.</li>
+        <li><strong>Identidade visual</strong> — logotipo e cores da sua igreja na plataforma.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  #docs { background: var(--creme); }
+
+  .docs-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .doc-block {
+    background: white;
+    border-radius: 16px;
+    padding: 1.8rem;
+    border: 1px solid rgba(59, 35, 9, 0.08);
+  }
+  .doc-block-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--verde-escuro);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .doc-step-list { list-style: none; counter-reset: step; }
+  .doc-step-list li {
+    counter-increment: step;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    margin-bottom: 0.7rem;
+    line-height: 1.5;
+  }
+  .doc-step-list li::before {
+    content: counter(step);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--verde-suave);
+    color: var(--verde-escuro);
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .doc-config-list { list-style: none; }
+  .doc-config-list li {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    line-height: 1.6;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(59, 35, 9, 0.06);
+  }
+  .doc-config-list li:last-child { border-bottom: none; }
+  .doc-config-list strong { color: var(--verde-escuro); }
+
+  @media (max-width: 900px) {
+    .docs-content { grid-template-columns: 1fr; }
+  }
+</style>

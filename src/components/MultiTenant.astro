@@ -1,0 +1,105 @@
+---
+const tenants = [
+  {
+    cor: 'verde',
+    nome: 'Igreja Ágape',
+    linhas: ['Células, Redes, Pastores', '1.200 membros', '68 células ativas', 'Terminologia própria'],
+  },
+  {
+    cor: 'dourado',
+    nome: 'Comunidade Nova Vida',
+    linhas: ['GCs, Supervisores', '340 membros', '22 grupos conectados', 'Configuração própria'],
+  },
+  {
+    cor: 'azul',
+    nome: 'Missão Esperança',
+    linhas: ['Pequenos Grupos', '89 membros', '8 grupos ativos', 'Plano inicial'],
+  },
+];
+---
+
+<section id="multitenant">
+  <div class="section-label">Multi-Igreja</div>
+  <h2 class="section-title">Uma plataforma,<br /><em>várias</em> igrejas</h2>
+  <div class="divider"></div>
+  <p class="section-desc">
+    Cada igreja tem seus próprios dados, configurações e terminologia — totalmente
+    isolados. Uma única instância do Aprisco atende dezenas de congregações
+    simultaneamente.
+  </p>
+
+  <div class="tenant-visual">
+    {tenants.map((t) => (
+      <div class={`tenant-card ${t.cor}`}>
+        <div class="tenant-lock" aria-hidden="true">🔒</div>
+        <div class="tenant-name">{t.nome}</div>
+        {t.linhas.map((linha) => (
+          <div class="tenant-row"><div class="tenant-dot"></div> {linha}</div>
+        ))}
+      </div>
+    ))}
+  </div>
+
+  <div class="isolation-banner">
+    <div class="isolation-icon" aria-hidden="true">🛡️</div>
+    <div class="isolation-text">
+      <strong>Isolamento total de dados garantido</strong>
+      <span>
+        Cada igreja acessa apenas os seus próprios dados. Nenhum membro, financeiro
+        ou configuração é compartilhado entre tenants — por arquitetura, não apenas
+        por permissão.
+      </span>
+    </div>
+  </div>
+</section>
+
+<style>
+  #multitenant { background: white; }
+
+  .tenant-visual { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .tenant-card {
+    flex: 1;
+    min-width: 220px;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 2px solid;
+    position: relative;
+  }
+  .tenant-card.verde { border-color: var(--verde-claro); background: rgba(122, 82, 48, 0.05); }
+  .tenant-card.dourado { border-color: var(--dourado); background: rgba(181, 145, 74, 0.05); }
+  .tenant-card.azul { border-color: #6AAFE6; background: rgba(106, 175, 230, 0.05); }
+
+  .tenant-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.8rem; }
+  .tenant-row {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem; color: var(--texto-suave); margin-bottom: 0.4rem;
+  }
+  .tenant-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .verde .tenant-dot { background: var(--verde-claro); }
+  .dourado .tenant-dot { background: var(--dourado); }
+  .azul .tenant-dot { background: #6AAFE6; }
+  .tenant-lock { position: absolute; top: 1rem; right: 1rem; font-size: 0.75rem; }
+
+  .isolation-banner {
+    background: var(--verde-escuro);
+    color: white;
+    border-radius: 14px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .isolation-icon { font-size: 2rem; }
+  .isolation-text { flex: 1; }
+  .isolation-text strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .isolation-text span { font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); }
+
+  @media (max-width: 600px) {
+    .isolation-banner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

@@ -1,0 +1,245 @@
+---
+const waNumber = '5521990193416';
+const wa = (msg: string) => `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+
+const planos = [
+  {
+    nome: 'Comunidade',
+    preco: '97',
+    sub: 'Ideal para igrejas iniciando',
+    features: [
+      'Até 200 membros',
+      'Módulos: Membros, Células, Feed',
+      '1 usuário administrador',
+      'Suporte por e-mail',
+      'Backup semanal automático',
+    ],
+    cta: 'Começar →',
+    featured: false,
+    waMsg: 'Olá! Tenho interesse no plano Comunidade do Aprisco.',
+  },
+  {
+    nome: 'Crescimento',
+    preco: '197',
+    sub: 'Para igrejas em expansão',
+    features: [
+      'Até 1.000 membros',
+      'Todos os 15 módulos',
+      '5 usuários administradores',
+      'Terminologia configurável',
+      'Suporte prioritário',
+      'Backup diário automático',
+      'Relatórios avançados',
+    ],
+    cta: 'Quero este plano →',
+    featured: true,
+    badge: 'Mais Popular',
+    waMsg: 'Olá! Tenho interesse no plano Crescimento do Aprisco.',
+  },
+  {
+    nome: 'Ministério',
+    preco: '397',
+    sub: 'Para grandes congregações',
+    features: [
+      'Membros ilimitados',
+      'Todos os módulos + API REST',
+      'Administradores ilimitados',
+      'Multi-campus (filiais)',
+      'Suporte dedicado',
+      'Backup em tempo real',
+      'Treinamento da equipe incluso',
+    ],
+    cta: 'Falar com consultor →',
+    featured: false,
+    waMsg: 'Olá! Tenho interesse no plano Ministério do Aprisco.',
+  },
+];
+---
+
+<section id="precos">
+  <div class="section-label center">Planos</div>
+  <h2 class="section-title center">Investimento <em>justo</em><br />para cada tamanho</h2>
+  <div class="divider center"></div>
+  <p class="section-desc center">
+    Planos flexíveis para igrejas de qualquer porte. Sem taxas ocultas, sem
+    surpresas.
+  </p>
+
+  <div class="pricing-grid">
+    {planos.map((p) => (
+      <div class={`pricing-card fade-in ${p.featured ? 'featured' : ''}`}>
+        {p.badge && <div class="pricing-badge">{p.badge}</div>}
+        <div class="pricing-name">{p.nome}</div>
+        <div class="pricing-price">R$ {p.preco} <span>/mês</span></div>
+        <div class="pricing-sub">{p.sub}</div>
+        <ul class="pricing-features">
+          {p.features.map((f) => <li>{f}</li>)}
+        </ul>
+        <a
+          href={wa(p.waMsg)}
+          target="_blank"
+          rel="noopener"
+          class={`btn-pricing ${p.featured ? 'btn-pricing-solid' : 'btn-pricing-outline'}`}
+        >{p.cta}</a>
+      </div>
+    ))}
+  </div>
+
+  <div class="implementacao-banner">
+    <div class="implementacao-content">
+      <div class="implementacao-icon" aria-hidden="true">🛠️</div>
+      <div>
+        <div class="implementacao-title">Taxa de Implementação</div>
+        <div class="implementacao-desc">
+          Além da mensalidade, há uma taxa única de implementação que cobre a
+          configuração inicial da plataforma, migração de dados, personalização da
+          terminologia e treinamento da equipe. O valor é definido conforme o
+          tamanho e as necessidades específicas da sua igreja.
+        </div>
+      </div>
+    </div>
+    <a
+      href={wa('Olá! Gostaria de consultar o valor da taxa de implementação do Aprisco.')}
+      target="_blank"
+      rel="noopener"
+      class="implementacao-btn"
+    >Consultar valor →</a>
+  </div>
+</section>
+
+<style>
+  #precos { background: white; }
+
+  .center { text-align: center; margin-left: auto; margin-right: auto; }
+  .section-title.center, .section-desc.center { text-align: center; }
+  .section-desc.center { margin: 0 auto 3rem; }
+  .divider.center { margin: 1.5rem auto 1rem; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .pricing-card {
+    border-radius: 20px;
+    padding: 2rem;
+    border: 2px solid rgba(59, 35, 9, 0.1);
+    background: var(--creme);
+    transition: all 0.3s;
+    position: relative;
+  }
+  .pricing-card.featured {
+    background: var(--verde-escuro);
+    border-color: var(--verde-escuro);
+    color: white;
+    transform: scale(1.03);
+  }
+  .pricing-card:hover:not(.featured) { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08); }
+
+  .pricing-badge {
+    position: absolute;
+    top: -0.7rem; left: 50%;
+    transform: translateX(-50%);
+    background: var(--dourado);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.25rem 0.9rem;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .pricing-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--verde-escuro);
+  }
+  .featured .pricing-name { color: var(--dourado-claro); }
+
+  .pricing-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--verde-escuro);
+    margin: 0.8rem 0 0.2rem;
+  }
+  .featured .pricing-price { color: white; }
+  .pricing-price span { font-size: 1rem; font-weight: 400; font-family: 'DM Sans', sans-serif; }
+
+  .pricing-sub { font-size: 0.82rem; color: var(--texto-suave); margin-bottom: 1.5rem; }
+  .featured .pricing-sub { color: rgba(255, 255, 255, 0.6); }
+
+  .pricing-features { list-style: none; margin-bottom: 2rem; }
+  .pricing-features li {
+    font-size: 0.85rem;
+    padding: 0.35rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--texto-suave);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .featured .pricing-features li { color: rgba(255, 255, 255, 0.8); border-bottom-color: rgba(255, 255, 255, 0.1); }
+  .pricing-features li::before { content: '✓'; color: var(--verde-claro); font-weight: 700; }
+
+  .btn-pricing {
+    display: block;
+    text-align: center;
+    padding: 0.85rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-pricing-outline { border: 2px solid var(--verde); color: var(--verde); }
+  .btn-pricing-outline:hover { background: var(--verde); color: white; }
+  .btn-pricing-solid { background: var(--dourado); color: white; }
+  .btn-pricing-solid:hover { background: #9a7a38; }
+
+  .implementacao-banner {
+    margin-top: 2.5rem;
+    background: linear-gradient(135deg, #2C1B0E, #2D6A4F);
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .implementacao-content { display: flex; align-items: flex-start; gap: 1.2rem; }
+  .implementacao-icon { font-size: 2rem; flex-shrink: 0; }
+  .implementacao-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--dourado-claro);
+    margin-bottom: 0.4rem;
+  }
+  .implementacao-desc {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    max-width: 520px;
+  }
+  .implementacao-btn {
+    background: var(--dourado);
+    color: white;
+    padding: 0.85rem 1.8rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .implementacao-btn:hover { background: #9a7a38; }
+</style>

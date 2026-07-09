@@ -1,0 +1,163 @@
+---
+const waMsg = encodeURIComponent('Olá! Gostaria de agendar uma demonstração gratuita do Aprisco.');
+const waLink = `https://wa.me/5521990193416?text=${waMsg}`;
+---
+
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Sistema de Gestão Eclesiástica</div>
+    <h1 class="hero-title">Gerencie sua<br />igreja com<br /><em>inteligência</em></h1>
+    <p class="hero-desc">
+      O Aprisco é um ecossistema completo e multi-tenant para gestão de igrejas
+      brasileiras — membros, células, finanças, voluntários e muito mais, tudo em
+      um só lugar.
+    </p>
+    <div class="hero-actions">
+      <a href={waLink} target="_blank" rel="noopener" class="btn-primary">Solicitar demonstração →</a>
+      <a href="#modulos" class="btn-secondary">Ver módulos ↓</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="dashboard-card">
+      <div class="floating-pill pill-1">⛪ Multi-tenant</div>
+      <div class="floating-pill pill-2">🔒 Dados isolados</div>
+      <div class="dash-header">
+        <div class="dash-title">Dashboard da Igreja</div>
+        <div class="dash-dot"></div>
+      </div>
+      <div class="dash-stats">
+        <div class="stat-box"><div class="stat-num">1.247</div><div class="stat-label">Membros ativos</div></div>
+        <div class="stat-box"><div class="stat-num">68</div><div class="stat-label">Células ativas</div></div>
+        <div class="stat-box"><div class="stat-num">R$ 42k</div><div class="stat-label">Dízimos do mês</div></div>
+        <div class="stat-box"><div class="stat-num">94%</div><div class="stat-label">Presença média</div></div>
+      </div>
+      <div class="dash-bar-row">
+        <div class="bar-item"><span>Membros</span><div class="bar-track"><div class="bar-fill" style="width:82%; background:var(--verde-claro)"></div></div><span>82%</span></div>
+        <div class="bar-item"><span>Voluntários</span><div class="bar-track"><div class="bar-fill" style="width:65%; background:var(--dourado)"></div></div><span>65%</span></div>
+        <div class="bar-item"><span>Cursos</span><div class="bar-track"><div class="bar-fill" style="width:47%; background:#6AAFE6"></div></div><span>47%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 5vw 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 50%, rgba(122, 82, 48, 0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 15% 85%, rgba(181, 145, 74, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--verde-suave);
+    color: var(--verde-escuro);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+  .hero-badge::before { content: '✦'; color: var(--dourado); }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.08;
+    color: var(--verde-escuro);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em { font-style: italic; color: var(--dourado); }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--texto-suave);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .dashboard-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.06);
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .floating-pill {
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .pill-1 { top: -1rem; right: -2rem; color: var(--verde-escuro); }
+  .pill-2 { bottom: 1rem; left: -2rem; color: var(--dourado); }
+
+  .dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .dash-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; }
+  .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--verde-claro); }
+
+  .dash-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .stat-box { background: var(--creme); border-radius: 12px; padding: 1rem; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--verde-escuro); }
+  .stat-label { font-size: 0.75rem; color: var(--texto-suave); margin-top: 0.2rem; }
+
+  .dash-bar-row { display: flex; flex-direction: column; gap: 0.6rem; }
+  .bar-item { display: flex; align-items: center; gap: 0.8rem; font-size: 0.8rem; color: var(--texto-suave); }
+  .bar-item span:first-child { width: 70px; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 6px; background: #eee; border-radius: 100px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 100px; }
+
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; padding-top: 8rem; min-height: auto; }
+    .hero-visual { display: none; }
+  }
+</style>
