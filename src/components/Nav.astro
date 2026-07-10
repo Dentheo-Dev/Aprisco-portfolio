@@ -13,12 +13,7 @@ const links = [
 
 <nav>
   <a href="#hero" class="nav-logo" aria-label="Aprisco — página inicial">
-    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="15" cy="15" r="14" stroke="#B5914A" stroke-width="1.5"/>
-      <path d="M15 6 L22 12 V24 H8 V12 Z" fill="#2C1B0E"/>
-      <path d="M15 6 L22 12 H8 Z" fill="#B5914A"/>
-      <rect x="13.2" y="16" width="3.6" height="8" fill="#E9C46A"/>
-    </svg>
+    <img src="/logo_aprisco.png" width="34" height="34" alt="" />
     Apri<span>sco</span>
   </a>
 
@@ -60,6 +55,10 @@ const links = [
     text-decoration: none;
   }
   .nav-logo span { color: var(--dourado); }
+  .nav-logo img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
 
   .nav-links {
     display: flex;

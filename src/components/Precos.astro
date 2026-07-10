@@ -70,7 +70,6 @@ const planos = [
       <div class={`pricing-card fade-in ${p.featured ? 'featured' : ''}`}>
         {p.badge && <div class="pricing-badge">{p.badge}</div>}
         <div class="pricing-name">{p.nome}</div>
-        <div class="pricing-price">R$ {p.preco} <span>/mês</span></div>
         <div class="pricing-sub">{p.sub}</div>
         <ul class="pricing-features">
           {p.features.map((f) => <li>{f}</li>)}
@@ -157,20 +156,10 @@ const planos = [
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.6rem;
     color: var(--verde-escuro);
   }
   .featured .pricing-name { color: var(--dourado-claro); }
-
-  .pricing-price {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--verde-escuro);
-    margin: 0.8rem 0 0.2rem;
-  }
-  .featured .pricing-price { color: white; }
-  .pricing-price span { font-size: 1rem; font-weight: 400; font-family: 'DM Sans', sans-serif; }
 
   .pricing-sub { font-size: 0.82rem; color: var(--texto-suave); margin-bottom: 1.5rem; }
   .featured .pricing-sub { color: rgba(255, 255, 255, 0.6); }
